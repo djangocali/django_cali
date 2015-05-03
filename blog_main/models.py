@@ -26,7 +26,7 @@ class Categoria(models.Model):
 class Entrada(models.Model):
     creado_en = models.DateTimeField(auto_now_add=True)
     modificado_en = models.DateTimeField(auto_now=True)
-    titulo = models.CharField(max_lenght=50, null=False, unique=True)
+    titulo = models.CharField(max_length=50, null=False, unique=True)
     contenido = models.TextField(null=False)
     slug = models.SlugField(max_length=50)
     autor = models.ForeignKey(User)
