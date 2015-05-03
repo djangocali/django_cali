@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
 
 
 class Entrada(models.Model):
@@ -8,6 +9,7 @@ class Entrada(models.Model):
     titulo = models.CharField(max_lenght=50, null=False, unique=True)
     contenido = models.TextField(null=False)
     slug = models.SlugField(max_length=50)
+    autor = models.ForeignKey(User)
 
     class Meta:
         verbose_name = "Entrada"
