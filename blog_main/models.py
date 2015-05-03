@@ -3,6 +3,26 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
 
+class Categoria(models.Model):
+    creado_en = models.DateTimeField(auto_now_add=True)
+    modificado_en = models.DateTimeField(auto_now=True)
+    nombre = models.CharField(max_length=50, unique=True, null=False)
+    slug = models.SlugField(max_length=50)
+
+    class Meta:
+        verbose_name = "Categoria"
+        verbose_name_plural = "Categorias"
+
+    def __str__(self):
+        return self.nombre
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.nombre)
+
+        super(Entrada, self).save(*args, **kwargs)
+
+
 class Entrada(models.Model):
     creado_en = models.DateTimeField(auto_now_add=True)
     modificado_en = models.DateTimeField(auto_now=True)
@@ -10,6 +30,7 @@ class Entrada(models.Model):
     contenido = models.TextField(null=False)
     slug = models.SlugField(max_length=50)
     autor = models.ForeignKey(User)
+    categoria = models.ForeignKey(Categoria)
 
     class Meta:
         verbose_name = "Entrada"
