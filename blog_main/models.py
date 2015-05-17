@@ -16,12 +16,12 @@ class Categoria(models.Model):
     def __str__(self):
         return self.nombre
 
-    def save(self, *args, **kwargs):
+    """ def save(self, *args, **kwargs):
         if not self.id:
             self.slug = slugify(self.nombre)
 
         super(Entrada, self).save(*args, **kwargs)
-
+    """
 
 class Entrada(models.Model):
     creado_en = models.DateTimeField(auto_now_add=True)
