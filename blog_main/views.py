@@ -1,24 +1,21 @@
-from django.shortcuts import render
-from django.views.generic import ListView  # , DetailView
+from django.views.generic import ListView, DetailView
 from .models import Entrada
 # Create your views here.
 
 
-class Mis_entradas(ListView):
+class ListaEntradas(ListView):
     model = Entrada
     template_name = 'entradas.html'
     context_object_name = 'entrada'
 
-"""class Detalle(DetailView):
+
+class EntradaDetallada(DetailView):
     model = Entrada
-    template = 'detalle.html'
-    context_object_name = 'detalle'
-"""
+    template_name = 'entrada-detallada.html'
 
-
-def detalle(request, pk):
-    cont = Entrada.objects.get(pk=pk)
-    return render(request, 'detalle.html', locals())
+    def get_context_data(self, **kwargs):
+        context = super(EntradaDetallada, self).get_context_data(**kwargs)
+        return context
 
 # Crear todas las vistas usando ClassBased Views
 

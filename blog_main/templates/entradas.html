@@ -11,7 +11,7 @@
     {% for ent in entrada %}
         <ul>
             <li>{{ent.titulo}}</li>
-            <li><a href="/blog/resultados/{{ent.id}}">{{ ent.titulo }}</a></li>
+            <li><a href="/blog/{{ent.slug}}">{{ ent.titulo }}</a></li>
             <li>{{ ent.contenido }}</li>
         </ul>
     {% endfor %}

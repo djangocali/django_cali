@@ -1,7 +1,7 @@
 from django.conf.urls import url
-from .views import Mis_entradas, detalle
+from .views import ListaEntradas, EntradaDetallada
 
 urlpatterns = [
-    url(r'^resultados/$', Mis_entradas.as_view(), name="resultados"),
-    url(r'^resultados/((?P<pk>[\d]+))/$', detalle, name="detalle"),
+    url(r'^$', ListaEntradas.as_view(), name="lista_entradas"),
+    url(r'^(?P<slug>[-\w]+)/$', EntradaDetallada.as_view(), name="detalle"),
 ]
