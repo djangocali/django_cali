@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Blog{% endblock %}
+
+{% block navbar-left %}
+    {% include "_navbar.html" with active_link="blog" %}
+{% endblock %}
+
+{% block container %}
+    <br>
+    <br>
+    <h1>{{ object.titulo }}</h1>
+    <br>
+    <p>{{ object.contenido }}</p>
+    <h4>Publicado el {{ object.creado_en }}</h4>
+    <h4>Autor: {{ object.autor }}</h4>
+
+
+{% endblock container %}

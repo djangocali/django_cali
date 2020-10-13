@@ -7,7 +7,8 @@ class Categoria(models.Model):
     creado_en = models.DateTimeField(auto_now_add=True)
     modificado_en = models.DateTimeField(auto_now=True)
     nombre = models.CharField(max_length=50, unique=True, null=False)
-    slug = models.SlugField(max_length=50)
+    slug = models.SlugField(max_length=50, null=True,
+                            blank=True, editable=False)
 
     class Meta:
         verbose_name = "Categoria"
@@ -20,7 +21,7 @@ class Categoria(models.Model):
         if not self.id:
             self.slug = slugify(self.nombre)
 
-        super(Entrada, self).save(*args, **kwargs)
+        super(Categoria, self).save(*args, **kwargs)
 
 
 class Entrada(models.Model):
@@ -28,7 +29,8 @@ class Entrada(models.Model):
     modificado_en = models.DateTimeField(auto_now=True)
     titulo = models.CharField(max_length=50, null=False, unique=True)
     contenido = models.TextField(null=False)
-    slug = models.SlugField(max_length=50)
+    slug = models.SlugField(max_length=50, null=True,
+                            blank=True, editable=False)
     autor = models.ForeignKey(User)
     categoria = models.ForeignKey(Categoria)
 

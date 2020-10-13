@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Entradas</title>
+</head>
+<body>
+    <h1>Entradas</h1>
+    <br>
+    {% for ent in entrada %}
+        <ul>
+            <li>{{ent.titulo}}</li>
+            <li><a href="/blog/{{ent.slug}}">{{ ent.titulo }}</a></li>
+            <li>{{ ent.contenido }}</li>
+        </ul>
+    {% endfor %}
+</body>
+</html>
